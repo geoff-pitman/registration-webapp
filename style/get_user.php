@@ -1,8 +1,8 @@
 <?php
-$DB_NAME = "gpitm379_bookstore";
+$DB_NAME = "dbname";
 $DB_HOST = "localhost";
-$DB_USER = "gpitm379";
-$DB_PASS = "bigboom";
+$DB_USER = "dbuser";
+$DB_PASS = "pass";
 $connection = mysql_connect($DB_HOST, $DB_USER, $DB_PASS)
 or die("Cannot connect to $DB_HOST as $DB_USER:" . mysql_error());
 mysql_select_db($DB_NAME) or die ("Cannot open $DB_NAME:" . mysql_error());
