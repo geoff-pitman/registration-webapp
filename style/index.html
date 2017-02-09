@@ -1,0 +1,815 @@
+<html>
+<head>
+<style>
+body {
+   background-color: silver;
+  margin-left: 10%;
+  margin-top: 10%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  font-family: "Times New Roman", Geneva, sans-serif;
+
+    background: url(woodendesk.jpeg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+
+hr {
+    display: block;
+	border: 0;
+	border-style: inset;
+    margin: 0;
+    padding: 0; 
+	margin-left: 10%
+	width: 95%;
+	box-shadow: -1px 1px 2px 4px rgba(203,182,119,0.6);
+	text-align: center;
+}
+
+.dropbtn, .kuBtn {
+    background-color: #CBB677;
+    color: black;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 20px;
+	margin: 5%;
+
+}
+.dropbtn:hover, .kuBtn:hover {
+    background-color: #dbd6bb;
+}
+
+
+.RequiredField {
+
+	text-align:left; 
+	margin-left:10px; 
+	font-size: 3vw;
+	margin-bottom: 0;
+
+
+}
+
+.Reminder
+{
+
+font-size: 2vw;
+text-decoration: none;
+
+}
+
+
+input {
+font-size: 4vw;
+}
+input[type=checkbox] {
+  transform: scale(3);
+}
+select {
+font-size: 4vw;
+}
+
+
+#imageLogo {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    border-radius: 25px;
+    padding: 20px; 
+  font-size: 4vw;
+  width: 85%;
+  color: white;
+  text-shadow: 3px 3px 0px black;
+  background-color: #511514;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  margin-top: 10%;
+  margin-bottom: 20%;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top; 
+   z-index: 1;
+    box-shadow: -1px 1px 5px 9px rgba(0,0,0,.8);
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+	text-shadow: 1px 1px 0px silver;
+    display: none;
+	 box-shadow: -1px 1px 4px 8px rgba(203,182,119,0.8);
+    z-index: 1;
+	color: #511514;
+	width: 95%;
+	//background-color: white;
+	background: url(form.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+	top: 0;
+	bottom 0;
+	margin-right: auto;
+	margin-left: auto;  
+	text-align: center;
+	display: none;
+	vertical-align: bottom;
+	text-align: center;
+}
+
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+​
+
+</style>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+// Close the dropdown menu if the user clicks outside of it
+/*
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) 
+  {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+*/
+
+function validateForm() {
+
+	if (document.getElementById("Email").value == "")
+	{
+		alert('Please enter an email!');
+		window.location = '#goEmail';
+		return false;
+	
+	}	
+	
+	if (document.getElementById("FirstName").value == "")
+	{
+		alert('Please enter a first name!');
+		window.location = '#goFirstName';
+		return false;
+	
+	}
+	
+	if (document.getElementById("LastName").value == "")
+	{
+		alert('Please enter a last name!');
+		window.location = '#goLastName';
+		return false;
+	
+	}
+
+	if (document.getElementById("Address").value == "")
+	{
+		alert('Please enter an email!');
+		window.location = '#goAddress';
+		return false;
+	
+	}	
+	
+	if (document.getElementById("City").value == "")
+	{
+		alert('Please enter a City!');
+		window.location = '#goCity';
+		return false;
+	}	
+
+	if (document.getElementById("Zip").value == "")
+	{
+		alert('Please enter an email!');
+		window.location = '#goZip';
+		return false;
+	
+	}	
+
+	var e = document.getElementById("State");
+	var strUser = e.options[e.selectedIndex].value;
+	if (strUser == "nogood")
+	{
+		alert( 'Please select a State!' );
+		window.location = '#goState';
+		return false;
+	}
+	var e = document.getElementById("TermInterested");
+	var strUser = e.options[e.selectedIndex].value;
+	if (strUser == "nogood")
+	{
+		alert( 'Please select Term of Interest!' );
+		window.location = '#goTerm';
+		return false;
+	}	
+	var e = document.getElementById("AdmitType");
+	var strUser = e.options[e.selectedIndex].value;
+	if (strUser == "nogood")
+	{
+		alert( 'Please select Admit Type!' );
+		window.location = '#goAdmit';
+		return false;
+	}
+	
+	if (document.getElementById("GradYear").value == "")
+	{
+		alert( 'Please select a graduation year!' );
+		window.location = '#goGradYear';
+		return false;
+	}
+	
+	
+	var checkBoxes = document.getElementsByClassName( 'cBox' );
+	var isChecked = false;
+    for (var i = 0; i < checkBoxes.length; i++) 
+	{
+        if ( checkBoxes[i].checked ) 
+		{
+           isChecked = true;
+        }
+    }
+    if ( !isChecked ) 
+	{   
+		alert( 'Please check at least one area of interest!' );
+		return false;
+    }
+
+	if(document.getElementById("NumAttending").value == "")
+	{
+		alert('Please enter the number of people attending!');
+		window.location = '#goNumAttending';
+		return false;
+	}
+	 	
+	if (document.getElementById("checkBIO").checked)
+		document.getElementById("BIO").value = "Y";
+		
+	if (document.getElementById("checkPREPRO").checked)
+		document.getElementById("PREPRO").value = "Y";
+		
+	if (document.getElementById("checkBCHM").checked)
+		document.getElementById("BCHM").value = "Y";
+	
+	if (document.getElementById("checkCHEM").checked)
+		document.getElementById("CHEM").value = "Y";
+
+	if (document.getElementById("checkCIS").checked)
+		document.getElementById("CIS").value = "Y";
+
+	if (document.getElementById("checkENV").checked)
+		document.getElementById("ENV").value = "Y";
+
+	if (document.getElementById("checkGEOG").checked)
+		document.getElementById("GEOG").value = "Y";
+	
+	if (document.getElementById("checkGEOL").checked)
+		document.getElementById("GEOL").value = "Y";
+
+	if (document.getElementById("checkIT").checked)
+		document.getElementById("IT").value = "Y";
+
+	if (document.getElementById("checkMAR").checked)
+		document.getElementById("MAR").value = "Y";
+
+	if (document.getElementById("checkMATH").checked)
+		document.getElementById("MATH").value = "Y";
+
+	if (document.getElementById("checkPHY").checked)
+		document.getElementById("PHY").value = "Y";
+	
+	if (document.getElementById("checkPHYAS").checked)
+		document.getElementById("PHYAS").value = "Y";
+		
+	if (document.getElementById("checkPHYEP").checked)
+		document.getElementById("PHYEP").value = "Y";
+	
+		
+		return(register());
+}
+
+function register()
+{
+
+				var data = new FormData();
+
+				
+				data.append('Email', document.getElementById("Email").value);
+				data.append('trackEmail', document.getElementById("trackEmail").value);
+				
+				data.append('LastName', document.getElementById("LastName").value);
+				data.append('trackLastName', document.getElementById("trackLastName").value);
+				
+				data.append('FirstName', document.getElementById("FirstName").value);
+				data.append('trackFirstName', document.getElementById("trackFirstName").value);
+				
+				data.append('Address', document.getElementById("Address").value);
+				data.append('trackAddress', document.getElementById("trackAddress").value);
+				
+				data.append('City', document.getElementById("City").value);
+				data.append('trackCity', document.getElementById("trackCity").value);
+				
+				data.append('State', document.getElementById("State").value);
+				data.append('trackState', document.getElementById("trackState").value);
+				
+				data.append('Phone', document.getElementById("Phone").value);
+				data.append('trackPhone', document.getElementById("trackPhone").value);
+				
+				data.append('Zip', document.getElementById("Zip").value);
+				data.append('trackZip', document.getElementById("trackZip").value);
+				
+				data.append('School', document.getElementById("School").value);
+				data.append('trackSchool', document.getElementById("trackSchool").value);
+				
+				data.append('GradYear', document.getElementById("GradYear").value);
+				data.append('trackGradYear', document.getElementById("trackGradYear").value);
+				
+				data.append('TermInterested', document.getElementById("TermInterested").value);
+				data.append('trackTermInterested', document.getElementById("trackTermInterested").value);
+				
+				data.append('AdmitType', document.getElementById("AdmitType").value);
+				data.append('trackAdmitType', document.getElementById("trackAdmitType").value);
+				
+				data.append('CheckinMethod', document.getElementById("CheckinMethod").value);
+				
+				data.append('NumAttending', document.getElementById("NumAttending").value);
+				data.append('trackNumAttending', document.getElementById("trackNumAttending").value);
+				
+				data.append('PreReg', document.getElementById("PreReg").value);
+				
+				data.append('BIO', document.getElementById("BIO").value);
+				data.append('trackBIO', document.getElementById("trackBIO").value);
+				
+				data.append('BCHM', document.getElementById("BCHM").value);
+				data.append('trackBCHM', document.getElementById("trackBCHM").value);
+				
+				data.append('PREPRO', document.getElementById("PREPRO").value);
+				data.append('trackPREPRO', document.getElementById("trackPREPRO").value);
+				
+				data.append('CIS', document.getElementById("CIS").value);
+				data.append('trackCIS', document.getElementById("trackCIS").value);
+				
+				data.append('IT', document.getElementById("IT").value);
+				data.append('trackIT', document.getElementById("trackIT").value);
+				
+				data.append('ENV', document.getElementById("ENV").value);
+				data.append('trackENV', document.getElementById("trackENV").value);
+				
+				data.append('CHEM', document.getElementById("CHEM").value);
+				data.append('trackCHEM', document.getElementById("trackCHEM").value);
+				
+				data.append('MAR', document.getElementById("MAR").value);
+				data.append('trackMAR', document.getElementById("trackMAR").value);
+				
+				data.append('MATH', document.getElementById("MATH").value);
+				data.append('trackMATH', document.getElementById("trackMATH").value);
+				
+				data.append('GEOG', document.getElementById("GEOG").value);
+				data.append('trackGEOG', document.getElementById("trackGEOG").value);
+				
+				data.append('GEOL', document.getElementById("GEOL").value);
+				data.append('trackGEOL', document.getElementById("trackGEOL").value);
+				
+				data.append('PHYEP', document.getElementById("PHYEP").value);
+				data.append('trackPHYEP', document.getElementById("trackPHYEP").value);
+				
+				data.append('PHY', document.getElementById("PHY").value);
+				data.append('trackPHY', document.getElementById("trackPHY").value);
+				
+				data.append('PHYAS', document.getElementById("PHYAS").value);
+				data.append('trackPHYAS', document.getElementById("trackPHYAS").value);
+				
+				var myObj = "";
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', 'registered.php', true);
+				xhr.onload = function (){
+				// do something to response
+					myObj = this.responseText;
+					//location.reload();
+					  var dropdowns = document.getElementsByClassName("dropdown-content");
+						var i;
+						for (i = 0; i < dropdowns.length; i++) {
+						  var openDropdown = dropdowns[i];
+						  if (openDropdown.classList.contains('show')) {
+							openDropdown.classList.remove('show');
+						  }
+						}
+						
+					window.location = '#AfterReg';
+					var div = document.getElementById('AfterReg');
+					var linkreload = "<br><br>Press button to check in next guest:<p><input class='kuBtn' type='button' onclick='nextGuest()' value='NEXT'></p>";
+					var elem = document.getElementById('Welcome');
+					elem.parentNode.removeChild(elem);
+					div.innerHTML = div.innerHTML + myObj + linkreload;
+					return false;
+					
+				}
+				
+				xhr.send(data);
+				
+				
+				return false;
+}
+function nextGuest() 
+{	
+	location.reload();
+	//window.location='#imageLogo';
+}
+function welcome()
+{
+	window.location = '#imageLogo';
+}
+function showUser() 
+{	
+	var emooCheck = false;
+	var emoo = document.getElementById("EmailTop").value;
+	if (emoo == "")
+	{
+		alert("Please enter an email address!");
+		return false;
+	}
+	else
+	{
+		if (emoo !="")
+		{
+			for (var i=0;i<emoo.length;i++)
+			{
+				if (emoo[i] == "@")
+				{
+					emooCheck = true;
+				}
+			}
+			if (emooCheck)
+			{
+							/*
+								function isEmpty(obj) 
+								{
+									return Object.keys(obj).length === 0;
+								}
+							*/
+				var data = new FormData();
+				data.append('Email', document.getElementById("EmailTop").value);
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', 'get_user.php', true);
+				xhr.onload = function (){
+				// do something to response
+					var myObj = JSON.parse(this.responseText);
+					if(Object.keys(myObj).length !== 0)
+					{
+						document.getElementById("Email").value = myObj["Email"];
+						document.getElementById("trackEmail").value = myObj["Email"];
+						document.getElementById("LastName").value = myObj["LastName"];
+						document.getElementById("trackLastName").value = myObj["LastName"];
+						document.getElementById("FirstName").value = myObj["FirstName"];
+						document.getElementById("trackFirstName").value = myObj["FirstName"];
+						document.getElementById("Address").value = myObj["Address"];
+						document.getElementById("trackAddress").value = myObj["Address"];
+						document.getElementById("City").value = myObj["City"];
+						document.getElementById("trackCity").value = myObj["City"];
+						document.getElementById("Zip").value = myObj["Zip"];
+						document.getElementById("trackZip").value = myObj["Zip"];
+						document.getElementById("School").value = myObj["School"];
+						document.getElementById("trackSchool").value = myObj["School"];
+						document.getElementById("GradYear").value = myObj["GradYear"];
+						document.getElementById("trackGradYear").value = myObj["GradYear"];
+						document.getElementById("Phone").value = myObj["Phone"];
+						document.getElementById("trackPhone").value = myObj["Phone"];
+						document.getElementById("NumAttending").value = myObj["NumAttending"];
+						document.getElementById("trackNumAttending").value = myObj["NumAttending"];
+						document.getElementById("PreReg").value = myObj["PreReg"];
+						
+						function setSelectedValue(selectObj, valueToSet) {
+							for (var i = 0; i < selectObj.options.length; i++) {
+								if (selectObj.options[i].value== valueToSet) {
+									selectObj.options[i].selected = true;
+									return;
+								}
+							}
+						}
+
+						//Get select object
+						var objSelect = document.getElementById("AdmitType");
+						//Set selected
+						document.getElementById("trackAdmitType").value = myObj["AdmitType"];
+						setSelectedValue(objSelect, myObj["AdmitType"]);
+
+
+						objSelect = document.getElementById("TermInterested");
+						document.getElementById("trackTermInterested").value = myObj["TermInterested"];
+						setSelectedValue(objSelect, myObj["TermInterested"]);
+
+						objSelect = document.getElementById("State");
+						document.getElementById("trackState").value = myObj["State"];
+						setSelectedValue(objSelect, myObj["State"]);
+
+					
+						if (myObj["BIO"] == 'Y')
+						{
+							document.getElementById("checkBIO").checked = true;
+							document.getElementById("trackBIO").value = "Y";
+						}
+						if (myObj["BCHM"] == 'Y')
+						{
+							document.getElementById("checkBCHM").checked = true;
+							document.getElementById("trackBCHM").value = "Y";
+						}
+						if (myObj["CHEM"] == 'Y')
+						{
+							document.getElementById("checkCHEM").checked = true;
+							document.getElementById("trackCHEM").value = "Y";
+						}
+						if (myObj["CIS"] == 'Y')
+						{
+							document.getElementById("checkCIS").checked = true;
+							document.getElementById("trackCIS").value = "Y";
+						}
+						if (myObj["ENV"] == 'Y')
+						{
+							document.getElementById("checkENV").checked = true;
+							document.getElementById("trackENV").value = "Y";
+						}
+						if (myObj["GEOG"] == 'Y')
+						{
+							document.getElementById("checkGEOG").checked = true;
+							document.getElementById("trackGEOG").value = "Y";
+						}
+						if (myObj["GEOL"] == 'Y')
+						{
+							document.getElementById("checkGEOL").checked = true;
+							document.getElementById("trackGEOL").value = "Y";
+						}
+						if (myObj["IT"] == 'Y')
+						{
+							document.getElementById("checkIT").checked = true;
+							document.getElementById("trackIT").value = "Y";
+						}
+						if (myObj["MATH"] == 'Y')
+						{
+							document.getElementById("checkMATH").checked = true;
+							document.getElementById("trackMATH").value = "Y";
+						}
+						if (myObj["MAR"] == 'Y')
+						{
+							document.getElementById("checkMAR").checked = true;
+							document.getElementById("trackMAR").value = "Y";
+						}
+						if (myObj["PHY"] == 'Y')
+						{
+							document.getElementById("checkPHY").checked = true;
+							document.getElementById("trackPHY").value = "Y";
+						}
+						if (myObj["PHYAS"] == 'Y')
+						{
+							document.getElementById("checkPHYAS").checked = true;
+							document.getElementById("trackPHYAS").value = "Y";
+						}
+						if (myObj["PHYEP"] == 'Y')
+						{
+							document.getElementById("checkPHYEP").checked = true;
+							document.getElementById("trackPHYEP").value = "Y";
+						}
+						if (myObj["PREPRO"] == 'Y')
+						{
+							document.getElementById("checkPREPRO").checked = true;
+							document.getElementById("trackPREPRO").value = "Y";
+							
+						}
+				}
+					var elem = document.getElementById('TopRemove');
+					document.getElementById('Email').value = document.getElementById("EmailTop").value;
+					elem.parentNode.removeChild(elem);
+					document.getElementById("myDropdown").classList.toggle("show");
+			};
+				xhr.send(data);
+				return false;
+			}
+			else
+			{
+				alert("@ must be in an email!");
+				return false;
+			}
+		}
+	}
+}
+</script>
+<title>KU STEM Open House Check-In</title>
+</head>
+<body onload="welcome()">
+<div class="dropdown" id="imageLogo">
+	<img id="imageLogo" src="logo.jpg" alt="KU Logo">
+	<a href="#imageLogo"></a>
+	<div id="Welcome" style="font-family:palatino,serif;text-align:center">
+		
+		<p><b>Welcome to the KU STEM Open House!</b></p>
+	</div>
+	<h2><a href="#AfterReg"></a><div id="AfterReg" style="font-family:palatino,serif;text-align:center"></div></h2>
+	<div id="TopRemove" style="text-align:center">
+	<p><b>Please enter your email to check-in:</b></p>
+	<div class="Reminder">(If you pre-registered, use that same email address)</div>
+		<form onsubmit="return showUser()">
+		<p>E-mail: <input type="text" id="EmailTop"></p> 
+		<p><input type="submit" class="dropbtn" id="DropButton" value="Submit"></p>
+		</form>
+		<hr>
+	</div>
+	<div id="myDropdown" class="dropdown-content">
+		<div id="FormContainer">
+		<form onsubmit="return validateForm()">
+			  
+			  <div class="RequiredField">(* required field)</div>
+			  <p style="color:black; margin-top:0; text-decoration:underline;"><b>Student Information</b></p>
+			  
+			  <a id="goEmail"></a><a href="#goEmail"></a>
+			  <p>*Email:<br><input type="email" required="true" name="Email" id="Email" value=""></p>
+			  
+			  <a id="goFirstName"></a><a href="#goFirstName"></a>
+			  <p>*First Name:<br><input type="text" required="true" name="FirstName" id="FirstName" value=""></p>
+			  
+			  <a id="goLastName"></a><a href="#goLastName"></a>
+			  <p>*Last Name:<br><input type="text" required="true" name="LastName" id="LastName"></p>
+
+			 <a id="goAddress"></a><a href="#goAddress"></a>
+			  <p>*Address:<br><input type="text" required="true" name="Address" id="Address"></p>
+			  
+			   <a id="goCity"></a><a href="#goCity"></a>
+			  <p>*City:<br><input type="text" required="true" name="City" id="City"></p>
+			  
+			  <a id="goState"></a><a href="#goState"></a>
+			  <p>*State:<br><select name="State" id="State">
+				<option value="nogood"> -- </option>
+				<option value="AL">Alabama</option>
+				<option value="AK">Alaska</option>
+				<option value="AZ">Arizona</option>
+				<option value="AR">Arkansas</option>
+				<option value="CA">California</option>
+				<option value="CO">Colorado</option>
+				<option value="CT">Connecticut</option>
+				<option value="DE">Delaware</option>
+				<option value="DC">District Of Columbia</option>
+				<option value="FL">Florida</option>
+				<option value="Foreign Country">Foreign Country</option>
+				<option value="GA">Georgia</option>
+				<option value="HI">Hawaii</option>
+				<option value="ID">Idaho</option>
+				<option value="IL">Illinois</option>
+				<option value="IN">Indiana</option>
+				<option value="IA">Iowa</option>
+				<option value="KS">Kansas</option>
+				<option value="KY">Kentucky</option>
+				<option value="LA">Louisiana</option>
+				<option value="ME">Maine</option>
+				<option value="MD">Maryland</option>
+				<option value="MA">Massachusetts</option>
+				<option value="PA">Pennsylvania</option>
+				<option value="MN">Minnesota</option>
+				<option value="MS">Mississippi</option>
+				<option value="MO">Missouri</option>
+				<option value="MT">Montana</option>
+				<option value="NE">Nebraska</option>
+				<option value="NV">Nevada</option>
+				<option value="NH">New Hampshire</option>
+				<option value="NJ">New Jersey</option>
+				<option value="NM">New Mexico</option>
+				<option value="NY">New York</option>
+				<option value="NC">North Carolina</option>
+				<option value="ND">North Dakota</option>
+				<option value="OH">Ohio</option>
+				<option value="OK">Oklahoma</option>
+				<option value="OR">Oregon</option>
+				<option value="PA">Pennsylvania</option>
+				<option value="RI">Rhode Island</option>
+				<option value="SC">South Carolina</option>
+				<option value="SD">South Dakota</option>
+				<option value="TN">Tennessee</option>
+				<option value="TX">Texas</option>
+				<option value="UT">Utah</option>
+				<option value="VT">Vermont</option>
+				<option value="VA">Virginia</option>
+				<option value="WA">Washington</option>
+				<option value="WV">West Virginia</option>
+				<option value="WI">Wisconsin</option>
+				<option value="WY">Wyoming</option>
+			</select></p>							
+			
+			 <a id="goZip"></a><a href="#goZip"></a>
+			  <p>*Zip:<br><input type="text" required="true" name="Zip" id="Zip"></p>
+			  <p>Phone:<br><input type="tel" name="Phone" id="Phone"></p>
+			  
+			  
+			  <br><p style="color:black; margin-top:0; text-decoration:underline;"><b>Education Information</b></p>
+			  
+			  <a id="goSchool"></a><a href="#goSchool"></a>
+			  <p>*High School:<br><input type="text" required="true" name="School" id="School"></p>
+			  
+			  <a id="goGradYear"></a><a href="#goGradYear"></a>
+			  <p>*Graduating Year:<br><input type="number" required="true" name="GradYear" min="1970" max="2022" id="GradYear"></p>
+			  
+			  <a id="goTerm"></a><a href="#goTerm"></a>
+			   <p>*Term of Interest (when are you planning to attend Kutztown University?):<br><select name="TermInterested" id="TermInterested">
+				<option value="nogood"> -- </option>
+				<option value="FA17">Fall '17</option>
+				<option value="SP18">Spring '18</option>
+				<option value="FA18">Fall '18</option>
+				<option value="SP19">Spring '19</option>
+				<option value="FA19">Fall '19</option>
+				<option value="SP20">Spring '20</option>
+				<option value="FA20">Fall '20</option>
+				<option value="SP21">Spring '21</option>
+				<option value="FA21">Fall '21</option>
+				<option value="SP22">Spring '22</option>
+				<option value="FA22">Fall '22</option>
+			  </select></p>
+			  
+			  <a id="goAdmit"></a><a href="#goAdmit"></a>
+			  <p>*Admit Type (Freshman, Transfer):<br><select name="AdmitType" id="AdmitType">
+				<option value="nogood"> -- </option>
+				<option value="Freshman">Freshman</option>
+				<option value="Transfer">Transfer</option>
+			  </select></p>
+			  
+			  <br><p style="color:black; margin-top: 0; text-decoration:underline;"><b>Areas of Interest (*check at least one):</b></p>
+			  <p>Biology</p><p><input class="cBox" type="checkbox" name="checkBIO" id="checkBIO" value="N"></p>
+			  <input type="hidden" name="BIO" id="BIO" value="N">
+			  <p>Biology - Pre-Medical and Other Health Careers</p><p><input class="cBox" type="checkbox" name="checkPREPRO" id="checkPREPRO" value="N"></p>
+			  <input type="hidden" name="PREPRO" id ="PREPRO" value="N">
+			  <p>Biochemistry</p><p><input class="cBox" type="checkbox" name="checkBCHM" id="checkBCHM" value="N"></p>
+			  <input type="hidden" name="BCHM" id="BCHM" value="N">
+			  <p>Chemistry</p><p><input class="cBox" type="checkbox" name="checkCHEM" id="checkCHEM" value="N"></p>
+			  <input type="hidden" name="CHEM" id="CHEM" value="N">
+			  <p>Computer Science</p><p><input class="cBox" type="checkbox" name="checkCIS" id="checkCIS" value="N"></p>
+			  <input type="hidden" name="CIS" id="CIS" value="N">
+			  <p>Environmental Science</p><p><input class="cBox" type="checkbox" name="checkENV" id="checkENV" value="N"></p>
+			  <input type="hidden" name="ENV" id="ENV" value="N">  
+			  <p>Geography</p><p><input class="cBox" type="checkbox" name="checkGEOG" id="checkGEOG" value="N"></p>
+			  <input type="hidden" name="GEOG" id="GEOG" value="N">  
+			  <p>Geology</p><p><input class="cBox" type="checkbox" name="checkGEOL" id="checkGEOL" value="N"></p>
+			  <input type="hidden" name="GEOL" id="GEOL" value="N">  
+			  <p>Information Technology</p><p><input class="cBox" type="checkbox" name="checkIT" id="checkIT" value="N"></p>
+			  <input type="hidden" name="IT" id="IT" value="N">
+			  <p>Marine Science</p><p><input class="cBox" type="checkbox" name="checkMAR" id="checkMAR" value="N"></p>
+			  <input type="hidden" name="MAR" id="MAR" value="N">
+			  <p>Mathematics</p><p><input class="cBox" type="checkbox" name="checkMATH" id="checkMATH" value="N"></p>
+			  <input type="hidden" name="MATH" id="MATH" value="N">
+			  <p>Physics</p><p><input class="cBox" type="checkbox" name="checkPHY" id="checkPHY" value="N"></p>
+			  <input type="hidden" name="PHY" id="PHY" value="N">
+			  <p>Physics - Astronomy</p><p><input class="cBox" type="checkbox" name="checkPHYAS" id="checkPHYAS" value="N"></p>
+			  <input type="hidden" name="PHYAS" id="PHYAS" value="N">
+			  <p>Physics - Engineering</p><p><input class="cBox" type="checkbox" name="checkPHYEP" id="checkPHYEP" value="N"></p>
+			  <input type="hidden" name="PHYEP" id="PHYEP" value="N">
+			  
+			 <a id="goNumAttending"></a><a href="#goNumAttending"></a>
+			 <br><p style="color:black; text-decoration:underline;"><b>Event Information</b></p>
+			 <p>*Number of guests attending:<br><input type="number" required="true" name="NumAttending" min="0" max="5" id="NumAttending"></p>
+			  
+			  <input type="hidden" name="PreReg" id="PreReg" value="N">
+			  <input type="hidden" name="CheckinMethod" id="CheckinMethod" value="KU">
+			  <input type="hidden" name="TrackChanges" id="TrackChanges" value="">
+			  
+				<input class="track" type="hidden" name="trackEmail" id="trackEmail" value="N">
+				<input class="track" type="hidden" name="trackLastName" id="trackLastName" value="N">
+				<input class="track" type="hidden" name="trackFirstName" id="trackFirstName" value="N">
+				<input class="track" type="hidden" name="trackAddress" id="trackAddress" value="N">
+				<input class="track" type="hidden" name="trackCity" id="trackCity" value="N">
+				<input class="track" type="hidden" name="trackState" id="trackState" value="N">
+				<input class="track" type="hidden" name="trackZip" id="trackZip" value="N">
+				<input class="track" type="hidden" name="trackPhone" id="trackPhone" value="N">
+				<input class="track" type="hidden" name="trackSchool" id="trackSchool" value="N">
+				<input class="track" type="hidden" name="trackGradYear" id="trackGradYear" value="N">
+				<input class="track" type="hidden" name="trackAdmitType" id="trackAdmitType" value="N">
+				<input class="track" type="hidden" name="trackTermInterested" id="trackTermInterested" value="N">
+				<input class="track" type="hidden" name="trackNumAttending" id="trackNumAttending" value="N">
+				<input class="track" type="hidden" name="trackBIO" id="trackBIO" value="N">
+				<input class="track" type="hidden" name="trackBCHM" id="trackBCHM" value="N">
+				<input class="track" type="hidden" name="trackCHEM" id="trackCHEM" value="N">
+				<input class="track" type="hidden" name="trackCIS" id="trackCIS" value="N">
+				<input class="track" type="hidden" name="trackENV" id="trackENV" value="N">
+				<input class="track" type="hidden" name="trackGEOG" id="trackGEOG" value="N">
+				<input class="track" type="hidden" name="trackGEOL" id="trackGEOL" value="N">
+				<input class="track" type="hidden" name="trackIT" id="trackIT" value="N">
+				<input class="track" type="hidden" name="trackMATH" id="trackMATH" value="N">
+				<input class="track" type="hidden" name="trackMAR" id="trackMAR" value="N">
+				<input class="track" type="hidden" name="trackPHY" id="trackPHY" value="N">
+				<input class="track" type="hidden" name="trackPHYAS" id="trackPHYAS" value="N">
+				<input class="track" type="hidden" name="trackPHYEP" id="trackPHYEP" value="N">
+				<input class="track" type="hidden" name="trackPREPRO" id="trackPREPRO" value="N">
+				
+				<p><input class="kuBtn" type='submit' value='Submit' id="FormSubmit"></p>
+			  <!-- <input type='reset' value='Clear'> -->
+			  </form>
+		</div>
+	</div>
+</div>
+
+</body>
+
+</html>
