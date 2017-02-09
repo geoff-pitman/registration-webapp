@@ -30,8 +30,8 @@ $prepro = $_POST['PREPRO'];
 $method = $_POST['CheckinMethod'];
 
 
-$conn = mysql_connect('localhost', 'gpitm379', 'bigboom');
-mysql_select_db('gpitm379_bookstore');
+$conn = mysql_connect('localhost', 'dbuser', 'pass');
+mysql_select_db('dbname');
 $query = "SELECT * FROM Registration WHERE Email = '$email'";
 $result = mysql_query($query);
 $numRows = mysql_numrows($result);
